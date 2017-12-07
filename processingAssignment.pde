@@ -1,12 +1,14 @@
 Star[] stars = new Star[800];
-
+ShipTop top;
+PowerMeter power;
+Grid grid;
 float speed;
 
 
 void setup()
 {
   fullScreen();
-  top = new ShipTop(0, 0);
+  top = new ShipTop(240, 240);
   power = new PowerMeter(10, 1500, 1500);
   grid = new Grid();
   for (int i = 0; i < stars.length; i++) {
@@ -14,9 +16,6 @@ void setup()
   }
 }
 
-ShipTop top;
-PowerMeter power;
-Grid grid;
 
 void draw()
 {
