@@ -13,7 +13,6 @@ void setup()
 {
   borderColour = 255;
   fullScreen();
-  //slider = new Slider(500, 1000, 300, 50);
   logo = new Logo (100, 150);
   sporeDrive = new SporeDrive(width/2, height/2);
   border = new Border(50, borderColour);
@@ -35,8 +34,7 @@ void draw()
   borderColour = blackAlert.render();
   border.update(borderColour);;
   translate(2800, 1500);
-   for (int i = 0; i < stars.length; i++) 
-   {
+   for (int i = 0; i < stars.length; i++) {
     stars[i].update();
     stars[i].show();
   }
@@ -46,6 +44,8 @@ void draw()
   logo.render();
   sporeDrive.update();
   sporeDrive.render();
+
+
 
 
 }

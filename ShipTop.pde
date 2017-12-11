@@ -36,15 +36,15 @@ class ShipTop
      curve(670, 600, 750, 900, 750, 500, 670, 800);
      //wing lines
      //left outer
-     line(160, 820, 325, 680);
-     line(162, 700, 400, 400);
+     line(162, 690, 347, 445);
+     line(162, 700, 350, 450);
      //right outer
-     line(690, 820, 525, 680);
-     line(688, 700, 450, 400);
+     line(688, 690, 503, 445);
+     line(688, 700, 500, 450);
      //left lower
-     line(162, 690, 400, 390);
+     line(160, 820, 325, 680);
      //right lower
-     line(688, 690, 450, 390);
+     line(690, 820, 525, 680);
      //back
      line(325, 680, 525, 680);
      line(340, 695, 510, 695);
@@ -53,14 +53,14 @@ class ShipTop
      //fill(255);
      
      //disk
-     fill(55);
+     //fill(55);
      ellipse(425, 240, 450, 450); 
      ellipse(425, 240, 440, 440);
      //line circle
      fill(#031F29);
      ellipse(425, 240, 270, 270);
      ellipse(425, 240, 220, 220);
-     fill(55);
+     //fill(55);
      ellipse(425, 240, 160, 160);
      ellipse(425, 240, 100, 100);
      //disk lines
@@ -70,7 +70,7 @@ class ShipTop
         float cy = sin(radians(angle)) * 135;
         line(cx+425, cy+240, 425, 240); //draw a line from each point back to the centre
       }
-     fill(#031F29);
+     //fill(#031F29);
      ellipse(425, 240, 80, 80);
      
     translate(-x, -y);
