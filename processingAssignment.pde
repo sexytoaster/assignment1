@@ -1,9 +1,7 @@
 color borderColour;
 Border border;
 Star[] stars = new Star[800];
-Button[] buttons = new Button[10];
 ShipTop top;
-PowerMeter power;
 Grid grid;
 BlackAlert blackAlert;
 Logo logo;
@@ -19,12 +17,10 @@ void setup()
   border = new Border(50, borderColour);
   blackAlert = new BlackAlert(2600, 300, 500, 100);
   top = new ShipTop(0, 600);
-  power = new PowerMeter(10, 1500, 1500);
   grid = new Grid();
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
-  buttons[0] = new Button(1000, 1000, 200, 50);
 }
 
 
