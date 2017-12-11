@@ -11,6 +11,7 @@ class BlackAlert{
   int y5;
   int x6;
   int y6;
+  int counter;
   
   
   int w1;
@@ -21,6 +22,7 @@ class BlackAlert{
   color rectColour;
   boolean rectOver = false;
   boolean overRect = false;
+  boolean trigger = false;
   
   BlackAlert(int x1, int y1, int w1, int h1){
     this.x1 = x1;
@@ -41,20 +43,29 @@ class BlackAlert{
     y5 = y2 + h1;
     x6 = x5;
     y6 = y2;
-    rectColour = color(0);
+    rectColour = color(100);
   }
   
   
-void render() {
+color render() {
   if(mousePressed)
   {
     if(mouseX>x1 && mouseX <x1+w1 && mouseY>y1 && mouseY <y1+h1)
     {
-      rectColour = int (random(0, 255));
+      counter++;
+      delay(100);
+    }
+    if(counter%2 == 0)
+    {
+      rectColour = 0;
+    }
+    else
+    {
+      rectColour = 100;
     }
   }
   fill(rectColour);
-  stroke(255);
+  stroke(rectColour);
   beginShape();
   vertex(x1, y1);
   vertex(x2, y2);
@@ -63,6 +74,8 @@ void render() {
   vertex(x5, y5);
   vertex(x6, y6);
   endShape();
+  
+  return rectColour;
 }
 
 
