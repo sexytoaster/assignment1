@@ -1,19 +1,25 @@
+
+
 Star[] stars = new Star[800];
+Button[] buttons = new Button[10];
 ShipTop top;
 PowerMeter power;
 Grid grid;
+//Slider slider;
 float speed;
 
 
 void setup()
 {
   fullScreen();
-  top = new ShipTop(240, 240);
+  //slider = new Slider(500, 1000, 300, 50);
+  top = new ShipTop(0, 0);
   power = new PowerMeter(10, 1500, 1500);
   grid = new Grid();
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
+  buttons[0] = new Button(1000, 1000, 200, 50);
 }
 
 
@@ -23,8 +29,10 @@ void draw()
   grid.render();
   top.render();
   //power.render();
-  
-  translate(2800, 1500);
+  //slider.update();
+  //slider.display();
+  buttons[0].render();
+    translate(2800, 1500);
   
    for (int i = 0; i < stars.length; i++) {
     stars[i].update();
