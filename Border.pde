@@ -1,21 +1,30 @@
 class Border {
   int w;
   int offset;
+  boolean spore;
   color borderColour;
   
-  Border(int w, color col){
+  Border(int w){
     this.w = w;
     offset = (width/3) * 2;
-    borderColour = col;
+    borderColour = 100;
   }
   
-  void update(int i)
+  void update(boolean trigger)
   {
-    borderColour = i;
+   spore = trigger;
   }
   void render()
   {
      //top border
+     if(spore == true)
+     {
+        borderColour = 0; 
+     }
+     else
+     {
+       borderColour = 100;
+     }
      stroke(borderColour);
      fill(borderColour);
      rect(0, 0, width, w);

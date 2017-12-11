@@ -47,7 +47,7 @@ class BlackAlert{
   }
   
   
-color render() {
+boolean render() {
   if(mousePressed)
   {
     if(mouseX>x1 && mouseX <x1+w1 && mouseY>y1 && mouseY <y1+h1)
@@ -58,10 +58,12 @@ color render() {
     if(counter%2 == 0)
     {
       rectColour = 0;
+      trigger = true;
     }
     else
     {
       rectColour = 100;
+      trigger = false;
     }
   }
   fill(rectColour);
@@ -75,7 +77,7 @@ color render() {
   vertex(x6, y6);
   endShape();
   
-  return rectColour;
+  return trigger;
 }
 
 
