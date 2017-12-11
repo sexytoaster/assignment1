@@ -3,6 +3,7 @@ class ShipTop
   int x;
   int y;
   int rx;
+  
   ShipTop(int x, int y)
   {
     this.x = x;
