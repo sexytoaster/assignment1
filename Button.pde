@@ -41,16 +41,16 @@ class Button{
     y5 = y2 + h1;
     x6 = x5;
     y6 = y2;
-    rectColour = color(0);
+    rectColour = color(255);
   }
   
   
-void render() {
+color render() {
   if(mousePressed)
   {
     if(mouseX>x1 && mouseX <x1+w1 && mouseY>y1 && mouseY <y1+h1)
     {
-      rectColour = int (random(0, 255));
+      rectColour = 0;
     }
   }
   fill(rectColour);
@@ -63,6 +63,8 @@ void render() {
   vertex(x5, y5);
   vertex(x6, y6);
   endShape();
+  
+  return rectColour;
 }
 
 
