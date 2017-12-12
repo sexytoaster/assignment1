@@ -34,8 +34,9 @@ void draw()
 {
   background(#031F29);
   grid.render();
-  top.render();
   spore = blackAlert.render();
+  top.update(spore);
+  top.render();
   border.update(spore);
   border.render();;
   translate(2800, 1500);

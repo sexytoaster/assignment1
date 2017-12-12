@@ -2,18 +2,34 @@ class ShipTop
 {
   int x;
   int y;
+  //for hull tooltip
   int x1;
   int y1;
+  //for left thruster
   int xl;
   int yl;
+  //for rght thruster
   int xr;
   int yr;
+  //for hull
   int w1;
   int h1;
+  //for thrusters
   int ht;
   int wt;
   int r;
   int rx;
+  //power in systems
+  int sp;
+  int ap;
+  int ep;
+  int sdp;
+  boolean spore = false;
+  String sd = "Shield Power: ";
+  String sh = "Auxiliary Power: ";
+  String se = "Engine Power: ";
+  String ss = "Spore Drive Power: ";
+  String percent = "%";
   String toolTipDisk;
   String toolTipHull;
   String toolTipEngine;
@@ -34,10 +50,53 @@ class ShipTop
     w1 = 526;
     ht = 400;
     wt = 75;
-    toolTipDisk = "Working";
-    toolTipHull = "Still Working";
-    toolTipEngine = "Engine";
-    toolTipSpore = "Spore";
+    sp = 70;
+    ap = 100;
+    ep = 30;
+    sdp = 0;
+    toolTipDisk = sd + sp + percent;
+    toolTipHull = sh + ap + percent;
+    toolTipEngine = se + ep + percent;
+    toolTipSpore = ss + sdp + percent;
+  }
+  
+  void update(boolean trigger)
+  {
+    spore = trigger;
+    if(spore)
+    {
+      if (sp > 0)
+      {
+        sp--;
+      }
+      if(ap > 0)
+      {
+        ap--;
+      }
+      if(ep < 100)
+      {
+        ep++;
+      }
+      if(sdp < 100)
+      {
+        sdp++;
+      }
+      toolTipDisk = sd + sp + percent;
+      toolTipHull = sh + ap + percent;
+      toolTipEngine = se + ep + percent;
+      toolTipSpore = ss + sdp + percent;
+    }
+    else
+    {
+      sp = 70;
+      ap = 100;
+      ep = 30;
+      sdp = 0;
+      toolTipDisk = sd + sp + percent;
+      toolTipHull = sh + ap + percent;
+      toolTipEngine = se + ep + percent;
+      toolTipSpore = ss + sdp + percent;
+    }
   }
   
   void render()
