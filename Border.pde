@@ -1,4 +1,5 @@
 class Border {
+  //just creating a static background order, just shapes and stuff
   int w;
   int offset;
   boolean spore;

@@ -1,5 +1,6 @@
 class Logo 
 {
+  //declare all the variables i ned to draw this
   int x;
   int y;
   int x1;
@@ -10,7 +11,9 @@ class Logo
   int y3;
   int x4;
   int y4;
+  //make font
   PFont logo;
+  //accurate star date calculations
   int d = day();
   int m = month();
   int year = year() - 1900;
@@ -21,6 +24,7 @@ class Logo
   
   Logo(int x, int y)
   {
+    //give variables values
     this.x = x;
     this.y = y;
     x1 = 100;
@@ -30,14 +34,11 @@ class Logo
     x3 = 200;
     y3 = 270;
     x4 = 120;
-    y4 = 170; 
+    y4 = 170;
+    //load font
     logo = loadFont("AmericanCaptainPatrius02FRE-100.vlw");
   }
   
-  void update()
-  {
-   
-  }
   
   void render()
   {

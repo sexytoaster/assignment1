@@ -60,7 +60,6 @@ void draw()
     mycelium[i].render();
   }
  }
-  logo.update();
   logo.render();
   sporeDrive.update(spore);
   trigger = sporeDrive.render(sporeOnline);

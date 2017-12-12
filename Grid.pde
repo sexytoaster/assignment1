@@ -1,10 +1,13 @@
 class Grid{
+  //creating the background effect
+  //declare valiables
   int x;
   int y;
   int xbuffer;
   int ybuffer;
   
   Grid(){
+    //give variales values
     this.x = 0;
     this.y = 0;
     this.xbuffer = 400;
@@ -12,6 +15,7 @@ class Grid{
   }
   
   void render(){
+    //draw the first grid
     strokeWeight(.5);
     stroke(#3C5A64);
     for(x = 0; x < width; x += 50)
