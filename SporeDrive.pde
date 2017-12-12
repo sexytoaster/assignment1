@@ -3,6 +3,9 @@ class SporeDrive{
   int y;
   int r;
   int counter = 1;
+  int buttonColour;
+  int track = 0;
+  int opacity;
   boolean spore;
   boolean trigger = false;
   int buttonRadius;
@@ -23,6 +26,8 @@ class SporeDrive{
    s = "OFFLINE";
    fade = 0;
    darken = 0;
+   buttonColour = 50;
+   opacity = 0;
  }
  
  void update(boolean trigger)
@@ -30,6 +35,27 @@ class SporeDrive{
    spore = trigger;
    i+= .01;
    j-= .02;
+   
+  
+     if(track == 0)
+     {
+       buttonColour += 5;
+     }
+     if(buttonColour >= 150)
+     {
+       track = 1;
+     }
+     if(track == 1)
+      {
+        buttonColour -= 5;
+      }
+     if (buttonColour <= 50)
+      {
+        buttonColour += 5;
+        track = 0;
+      }
+
+   
  }
  
  boolean render()
@@ -55,6 +81,7 @@ class SporeDrive{
         fade += 15;
         darken += 10;
         trigger = true;
+        opacity = 0;
         if(fade >= 255)
         {
           counter--;
@@ -72,14 +99,24 @@ class SporeDrive{
    textFont(drive);
    textSize(40);
    textAlign(CENTER);
+   noFill();
+   if(spore == true)
+   {
+     opacity += 10;
+     fill(buttonColour, 0, 0, opacity);
+   }
+   else
+   {
+     opacity = 0;
+   }
+   ellipse(0, 0, buttonRadius, buttonRadius);
    fill(255);
-   text(s, 0, 30);
+   text(s, 0, 20);
    textSize(60);
    stroke(255);
    text("Spore Drive", 0, 400);
    rotate(i);
    noFill();
-   ellipse(0, 0, buttonRadius, buttonRadius);
    arc(0, 0, r, r, 0, (PI * 1.7));
    rotate(j);
    arc(0, 0, r-60, r-60, 0, (PI * 1.8));
