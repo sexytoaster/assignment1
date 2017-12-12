@@ -1,7 +1,7 @@
 class Mycelium{
+  //create the variables we need
   float x;
   float y;
-  float z;
   float sx;
   float sy;
   float d;
@@ -15,9 +15,8 @@ class Mycelium{
   Mycelium()
   {
     //spawn the mycelium at edges of screen
-    
+    //this is so we can reset the position of the mycelium after the spore drive has fired
     reset();
-    z = width;
     gap = int(random(1, 15));
     d = 8;
     red = int(random(0, 180));

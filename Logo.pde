@@ -42,6 +42,7 @@ class Logo
   
   void render()
   {
+    //drawing the logo
     translate(x, y);
     stroke(255);
     fill(255);
