@@ -2,13 +2,16 @@ class ShipTop
 {
   int x;
   int y;
+  int r;
   int rx;
+  String toolTip;
   
   ShipTop(int x, int y)
   {
     this.x = x;
     this.y = y;
-  
+    r = 450;
+    toolTip = "Working";
   }
   
   void render()
@@ -54,7 +57,7 @@ class ShipTop
      
      //disk
      //fill(55);
-     ellipse(425, 240, 450, 450); 
+     ellipse(425, 240, r, r); 
      ellipse(425, 240, 440, 440);
      //line circle
      fill(#031F29);
@@ -72,7 +75,24 @@ class ShipTop
       }
      //fill(#031F29);
      ellipse(425, 240, 80, 80);
+     translate(-x, -y);
      
-    translate(-x, -y);
+     float disX = x + 425 - mouseX;
+     float disY = y + 240 - mouseY;
+      if(mousePressed)
+      {
+        if (sqrt(sq(disX) + sq(disY)) < r/2 )
+        {
+          println(toolTip);
+          float tw = textWidth(toolTip);
+          fill(0);
+          stroke(255);
+          rect(mouseX, mouseY, tw + 4, 90);
+          textSize(30);
+          fill(255);
+          text(toolTip, mouseX + 10, mouseY + 20, tw, 40);
+        }
+      }
+     
 }
 }
