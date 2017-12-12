@@ -8,6 +8,8 @@ class SporeDrive{
   int opacity;
   boolean spore;
   boolean trigger = false;
+  boolean activate;
+  boolean online = false;
   int buttonRadius;
   float i;
   float j;
@@ -58,10 +60,14 @@ class SporeDrive{
    
  }
  
- boolean render()
+ boolean render(boolean online)
  {
+   activate = online;
    if (spore == true)
    {
+     s = "CHARGING";
+     if(activate == true)
+     {
      s = "ENGAGE";
      float disX = x - mouseX;
      float disY = y - mouseY;
@@ -88,9 +94,12 @@ class SporeDrive{
           fade = 0;
           darken = 0;
           trigger = false;
+          online = false;
+          //s = "CHARGING";
         }
       }
     }
+   }
     else
     {
       s = "OFFLINE";

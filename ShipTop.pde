@@ -1,5 +1,7 @@
 class ShipTop
 {
+  //to know if the spore drive is charged
+  boolean sporeDrive = false;
   int x;
   int y;
   //for hull tooltip
@@ -60,7 +62,7 @@ class ShipTop
     toolTipSpore = ss + sdp + percent;
   }
   
-  void update(boolean trigger)
+  boolean update(boolean trigger)
   {
     spore = trigger;
     if(spore)
@@ -85,6 +87,10 @@ class ShipTop
       toolTipHull = sh + ap + percent;
       toolTipEngine = se + ep + percent;
       toolTipSpore = ss + sdp + percent;
+      if (sdp >= 100)
+      {
+        sporeDrive = true;
+      }
     }
     else
     {
@@ -96,7 +102,10 @@ class ShipTop
       toolTipHull = sh + ap + percent;
       toolTipEngine = se + ep + percent;
       toolTipSpore = ss + sdp + percent;
+      sporeDrive = false;
     }
+    
+    return sporeDrive;
   }
   
   void render()
@@ -168,7 +177,7 @@ class ShipTop
      if ((sqrt(sq(disX) + sq(disY)) < r/2) )
      {
        float tw = textWidth(toolTipDisk);
-       fill(0);
+       fill(#013646);
        stroke(255);
        rect(mouseX, mouseY, tw + 4, 90);
        textSize(30);
@@ -178,7 +187,7 @@ class ShipTop
     if(mouseX> (x +x1) && mouseX < (x +x1 + w1) && mouseY > (y + y1) && mouseY < (y + y1 + h1))
      {
        float tw = textWidth(toolTipHull);
-       fill(0);
+       fill(#013646);
        stroke(255);
        rect(mouseX, mouseY, tw + 4, 90);
        textSize(30);
@@ -188,7 +197,7 @@ class ShipTop
      if((mouseX> (x + xl) && mouseX < (x +xl + wt) && mouseY > (y + yl) && mouseY < (y + yl + ht)) || (mouseX > (x + xr) && mouseX < (x +xr + wt) && mouseY > (y + yr) && mouseY < (y + yr + ht)) )
      {
        float tw = textWidth(toolTipEngine);
-       fill(0);
+       fill(#013646);
        stroke(255);
        rect(mouseX, mouseY, tw + 4, 90);
        textSize(30);

@@ -1,4 +1,5 @@
 class BlackAlert{
+  //declare all variables, for our shape
   int x1;
   int y1;
   int x2;
@@ -13,18 +14,21 @@ class BlackAlert{
   int y6;
   int counter;
   
-  
+  //width height etc
   int w1;
   int h1;
   int xOffset;
   int yOffset;
   
+  //booleans to detect mouse positions
   color rectColour;
   boolean rectOver = false;
   boolean overRect = false;
   boolean trigger = false;
   
+  //constructor
   BlackAlert(int x1, int y1, int w1, int h1){
+    //give variables values
     this.x1 = x1;
     this.y1 = y1;
     this.w1 = w1;
@@ -49,20 +53,24 @@ class BlackAlert{
   
   
 boolean render() {
+  //button for black alert, was gonna make a button class but only had 2 buttons and they were very differnt(one rect, one circle)
   if(mousePressed)
   {
     if(mouseX>x1 && mouseX <x1+w1 && mouseY>y1 && mouseY <y1+h1)
     {
+      //if clicked, increment the counter and delay because it was counting a lot
       counter++;
       delay(100);
     }
     if(counter%2 == 0)
     {
+      //make rect black and change bool to let know black alert active
       rectColour = 0;
       trigger = true;
     }
     else
     {
+      //colour back to neutral, trigger off
       rectColour = color(#024255);
       trigger = false;
     }
