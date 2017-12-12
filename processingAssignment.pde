@@ -1,3 +1,7 @@
+//OOP assignment 1
+//c16462144
+//Patrick O'Connor
+//DT228/2
 //bools to control the flow of the rogram
 boolean spore;
 boolean trigger;
