@@ -2,16 +2,42 @@ class ShipTop
 {
   int x;
   int y;
+  int x1;
+  int y1;
+  int xl;
+  int yl;
+  int xr;
+  int yr;
+  int w1;
+  int h1;
+  int ht;
+  int wt;
   int r;
   int rx;
-  String toolTip;
+  String toolTipDisk;
+  String toolTipHull;
+  String toolTipEngine;
+  String toolTipSpore;
   
   ShipTop(int x, int y)
   {
     this.x = x;
     this.y = y;
     r = 450;
-    toolTip = "Working";
+    x1 = 162;
+    y1 = 450;
+    xl = 87;
+    yl = 500;
+    xr = 688;
+    yr = 500;
+    h1 = 290;
+    w1 = 526;
+    ht = 400;
+    wt = 75;
+    toolTipDisk = "Working";
+    toolTipHull = "Still Working";
+    toolTipEngine = "Engine";
+    toolTipSpore = "Spore";
   }
   
   void render()
@@ -79,20 +105,38 @@ class ShipTop
      
      float disX = x + 425 - mouseX;
      float disY = y + 240 - mouseY;
-      if(mousePressed)
-      {
-        if (sqrt(sq(disX) + sq(disY)) < r/2 )
-        {
-          println(toolTip);
-          float tw = textWidth(toolTip);
-          fill(0);
-          stroke(255);
-          rect(mouseX, mouseY, tw + 4, 90);
-          textSize(30);
-          fill(255);
-          text(toolTip, mouseX + 10, mouseY + 20, tw, 40);
-        }
-      }
+     
+     if ((sqrt(sq(disX) + sq(disY)) < r/2) )
+     {
+       float tw = textWidth(toolTipDisk);
+       fill(0);
+       stroke(255);
+       rect(mouseX, mouseY, tw + 4, 90);
+       textSize(30);
+       fill(255);
+       text(toolTipDisk, mouseX + 10, mouseY + 20, tw, 40);
+     }
+    if(mouseX> (x +x1) && mouseX < (x +x1 + w1) && mouseY > (y + y1) && mouseY < (y + y1 + h1))
+     {
+       float tw = textWidth(toolTipHull);
+       fill(0);
+       stroke(255);
+       rect(mouseX, mouseY, tw + 4, 90);
+       textSize(30);
+       fill(255);
+       text(toolTipHull, mouseX + 10, mouseY + 20, tw, 40);
+     }
+     if((mouseX> (x + xl) && mouseX < (x +xl + wt) && mouseY > (y + yl) && mouseY < (y + yl + ht)) || (mouseX > (x + xr) && mouseX < (x +xr + wt) && mouseY > (y + yr) && mouseY < (y + yr + ht)) )
+     {
+       float tw = textWidth(toolTipEngine);
+       fill(0);
+       stroke(255);
+       rect(mouseX, mouseY, tw + 4, 90);
+       textSize(30);
+       fill(255);
+       text(toolTipEngine, mouseX + 10, mouseY + 20, tw, 40);
+       text(toolTipSpore, mouseX + 10, mouseY + 60, tw, 80);
+     }
      
 }
 }
