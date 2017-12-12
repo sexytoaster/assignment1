@@ -26,6 +26,7 @@ class ShipTop
   int ap;
   int ep;
   int sdp;
+  //for the tooltips
   boolean spore = false;
   String sd = "Shield Power: ";
   String sh = "Auxiliary Power: ";
@@ -39,6 +40,7 @@ class ShipTop
   
   ShipTop(int x, int y)
   {
+    //give variables initial values
     this.x = x;
     this.y = y;
     r = 450;
@@ -56,6 +58,7 @@ class ShipTop
     ap = 100;
     ep = 30;
     sdp = 0;
+    //concat strings together
     toolTipDisk = sd + sp + percent;
     toolTipHull = sh + ap + percent;
     toolTipEngine = se + ep + percent;
@@ -65,35 +68,44 @@ class ShipTop
   boolean update(boolean trigger)
   {
     spore = trigger;
+    //if someone turns on the black alert
     if(spore)
     {
+      //divert from shields
       if (sp > 0)
       {
         sp--;
       }
+      //divert from auxiliary
       if(ap > 0)
       {
         ap--;
       }
+      //send power to engines
       if(ep < 100)
       {
         ep++;
       }
+      //send power to spore drive
       if(sdp < 100)
       {
         sdp++;
       }
+      //update these strings with new percents
       toolTipDisk = sd + sp + percent;
       toolTipHull = sh + ap + percent;
       toolTipEngine = se + ep + percent;
       toolTipSpore = ss + sdp + percent;
+      //if its 100% charged, its ready to go
       if (sdp >= 100)
       {
         sporeDrive = true;
       }
     }
+    //if black alert aint engaged
     else
     {
+      //ack to normal
       sp = 70;
       ap = 100;
       ep = 30;
@@ -104,13 +116,13 @@ class ShipTop
       toolTipSpore = ss + sdp + percent;
       sporeDrive = false;
     }
-    
+    //return if its charged or not
     return sporeDrive;
   }
   
   void render()
   {
-    
+    //this is all the lines to make the ship
     strokeWeight(1);
     
     stroke(255);
@@ -171,11 +183,13 @@ class ShipTop
      ellipse(425, 240, 80, 80);
      translate(-x, -y);
      
+     //determine if hovering over the disk
      float disX = x + 425 - mouseX;
      float disY = y + 240 - mouseY;
      
      if ((sqrt(sq(disX) + sq(disY)) < r/2) )
      {
+       //if you are, tooltip
        float tw = textWidth(toolTipDisk);
        fill(#013646);
        stroke(255);
@@ -184,8 +198,10 @@ class ShipTop
        fill(255);
        text(toolTipDisk, mouseX + 10, mouseY + 20, tw, 40);
      }
+     //if you are hovering over the hull
     if(mouseX> (x +x1) && mouseX < (x +x1 + w1) && mouseY > (y + y1) && mouseY < (y + y1 + h1))
      {
+       //different tooltip
        float tw = textWidth(toolTipHull);
        fill(#013646);
        stroke(255);
@@ -194,8 +210,10 @@ class ShipTop
        fill(255);
        text(toolTipHull, mouseX + 10, mouseY + 20, tw, 40);
      }
+     //if you hover over the engines
      if((mouseX> (x + xl) && mouseX < (x +xl + wt) && mouseY > (y + yl) && mouseY < (y + yl + ht)) || (mouseX > (x + xr) && mouseX < (x +xr + wt) && mouseY > (y + yr) && mouseY < (y + yr + ht)) )
      {
+       //a different tooltip
        float tw = textWidth(toolTipEngine);
        fill(#013646);
        stroke(255);

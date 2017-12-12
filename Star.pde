@@ -26,30 +26,34 @@ class Star {
   
     
   void update() {
+    //rotating each x and y in a way so it looks 3d
     x = (x * cos(.002)) - (y * sin(.008));
     y = (x * sin(.002)) + (y * cos(.002));
+    //rotate the "Klingons detected" in a similar way
     sx = (sx * cos(.001)) - (sy * sin(.001));
     sy = (sx * sin(.001)) + (sy * cos(.001));
   }
   
   
   void show() {
+    //choose font
     textFont(Trek);
     fill(255);
     noStroke();
     strokeWeight(10);
-   
+    
+    //draw each star
     float r = 2;
     ellipse(x, y, r, r);
     
-    
+    //highlight is a random float, it means that klingons detected and planets of interest are highlighted randomly
     if (highlight < 1) 
     {
     noFill();
     stroke(255);
     strokeWeight(2);
     ellipse(x, y, 20, 20);
-    
+    //this is for klingons detected, its a low chance but with 800 stars usually we find 1 or 2 atleast
       if(highlight < .2)
       {
         stroke(255, 0, 0);

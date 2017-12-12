@@ -5,7 +5,7 @@ class Mycelium{
   float sx;
   float sy;
   float d;
-  int speed;
+  float speed;
   int counter = 1;
   boolean spore = false;
   int gap;
@@ -25,12 +25,16 @@ class Mycelium{
   
   void reset()
   {
+    //this makes them spawn offscreen, pretty clever if you ask me ;)
+    //random x
     x = random(-200, width + 200);
+    //if the x is on the screen
     if ((x >= -10) && (x <= width + 10))
     {
       randomizer = int (random(0, 2));
       if(randomizer == 1)
       {
+        //make y go off the screen one side or the other
         y = random(-200, -10);
       }
       else
@@ -46,6 +50,8 @@ class Mycelium{
   
   void update(boolean spore)
   {
+    //if value hasnt yet reached the ammount we are allowing it to move on screen, let it move more
+    //apply to all
     if(y < gap)
     {
       y = y + speed;
@@ -63,6 +69,7 @@ class Mycelium{
       x = x - speed;
     }
     
+    //if the spore falls in a potential range near the gap, make it shrink and then reset its x and y
     if((y > gap - speed && y < gap + speed) || (y < (height - gap) + speed && y > (height - gap) - speed))
     {
       d-= 2;
@@ -80,6 +87,7 @@ class Mycelium{
       }
     }
     }
+    //same as above
     if((x > gap - speed && x < gap + speed) || (x < (width - gap) + speed && x > (width - gap) - speed) )
     {
       d -= 2;
@@ -97,18 +105,21 @@ class Mycelium{
       }
     }
     }
+    //if the spore drive is going off, make the gap bigger and increase speed
     if(spore)
     {
       gap = 100;
       speed += 5;
       counter = 0;
     }
+    //otherwise the same
     else
     {
       gap = int(random(1, 15));
-      speed = 1;
+      speed = (random(0,2));
       counter++;
     }
+    //if the else happens right after the drive fires, counter will be equal to one, if so reset
     if (counter == 1)
     {
       reset();
@@ -117,6 +128,7 @@ class Mycelium{
   
   void render()
   {
+    //normal render with an ellipse
    fill(red, 230, 230);
    noStroke();
    ellipse(x, y, d, d);
