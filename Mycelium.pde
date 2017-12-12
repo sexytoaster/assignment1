@@ -12,16 +12,16 @@ class Mycelium{
   {
     //spawn the mycelium at edges of screen
     x = random(-200, width + 200);
-    if ((x >= 10) && (x <= width - 10))
+    if ((x >= -10) && (x <= width + 10))
     {
       randomizer = int (random(0, 2));
       if(randomizer == 1)
       {
-        y = random(-200, 10);
+        y = random(-200, -10);
       }
       else
       {
-        y = random(height -10, height + 200);
+        y = random(height + 10, height + 200);
       }
     }
     else

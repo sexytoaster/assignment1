@@ -1,7 +1,7 @@
 boolean spore;
 Border border;
 Star[] stars = new Star[800];
-Mycelium[] mycelium = new Mycelium[20000];
+Mycelium[] mycelium = new Mycelium[1000];
 ShipTop top;
 Grid grid;
 BlackAlert blackAlert;
@@ -43,13 +43,14 @@ void draw()
     stars[i].show();
   }
   translate(-2800, -1500);
- 
+ if(spore)
+ {
   for(int i = 0; i < mycelium.length; i++)
   {
     mycelium[i].update();
     mycelium[i].render();
   }
-  
+ }
   logo.update();
   logo.render();
   sporeDrive.update(spore);

@@ -2,6 +2,7 @@ class SporeDrive{
   int x;
   int y;
   int r;
+  int counter = 1;
   boolean spore;
   int buttonRadius;
   float i;
@@ -37,8 +38,13 @@ class SporeDrive{
       {
         if (sqrt(sq(disX) + sq(disY)) < buttonRadius/2 )
         {
-          fill(250);
+          counter++;
+          delay(100);
         }
+      }
+      if(counter % 2 == 0)
+      {
+        fill(0);
       }
     }
     else
