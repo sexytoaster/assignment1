@@ -7,7 +7,7 @@ class Border {
   Border(int w){
     this.w = w;
     offset = (width/3) * 2;
-    borderColour = 100;
+    borderColour = color(#024255);
   }
   
   void update(boolean trigger)
@@ -23,7 +23,7 @@ class Border {
      }
      else
      {
-       borderColour = 100;
+       borderColour = color(#024255);
      }
      stroke(borderColour);
      fill(borderColour);

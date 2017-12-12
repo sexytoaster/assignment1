@@ -79,7 +79,7 @@ class SporeDrive{
         noStroke();
         rect(0, 0, width, height);
         fade += 15;
-        darken += 10;
+        darken += 15;
         trigger = true;
         opacity = 0;
         if(fade >= 255)

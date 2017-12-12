@@ -43,7 +43,8 @@ class BlackAlert{
     y5 = y2 + h1;
     x6 = x5;
     y6 = y2;
-    rectColour = color(100);
+    rectColour = color(#024255);
+    counter = 1;
   }
   
   
@@ -62,7 +63,7 @@ boolean render() {
     }
     else
     {
-      rectColour = 100;
+      rectColour = color(#024255);
       trigger = false;
     }
   }
@@ -76,6 +77,9 @@ boolean render() {
   vertex(x5, y5);
   vertex(x6, y6);
   endShape();
+  fill(255);
+  textSize(40);
+  text("BLACK ALERT", x1 + 30 , y1 + 60);
   
   return trigger;
 }
