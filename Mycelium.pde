@@ -4,6 +4,10 @@ class Mycelium{
   float z;
   float sx;
   float sy;
+  float d;
+  int speed;
+  int counter = 1;
+  boolean spore = false;
   int gap;
   int randomizer;
   color red;
@@ -11,6 +15,17 @@ class Mycelium{
   Mycelium()
   {
     //spawn the mycelium at edges of screen
+    
+    reset();
+    z = width;
+    gap = int(random(1, 15));
+    d = 8;
+    red = int(random(0, 180));
+    speed = 1;
+  }
+  
+  void reset()
+  {
     x = random(-200, width + 200);
     if ((x >= -10) && (x <= width + 10))
     {
@@ -28,33 +43,33 @@ class Mycelium{
     {
       y = random(-200, height + 200);
     }
-    
-    z = width;
-    gap = 10;
-    red = int(random(0, 180));
   }
   
-  void update()
+  void update(boolean spore)
   {
     if(y < gap)
     {
-      y = y + 1;
+      y = y + speed;
     }
     else if(y > height - gap)
     {
-      y = y - 1;
+      y = y - speed;
     }
     if(x < gap)
     {
-      x = x + 1;
+      x = x + speed;
     }
     else if(x > width - gap)
     {
-      x = x - 1;
+      x = x - speed;
     }
     
-    if((y > gap - 1 && y < gap + 1) || (y < (height - gap) + 1 && y > (height - gap) - 1))
+    if((y > gap - speed && y < gap + speed) || (y < (height - gap) + speed && y > (height - gap) - speed))
     {
+      d-= 2;
+      if (d <= 0)
+      {
+      d = 8;
       randomizer = int (random(0, 2));
       if(randomizer == 1)
       {
@@ -65,8 +80,13 @@ class Mycelium{
         y = random(height -10, height + 200);
       }
     }
-    if((x > gap - 1 && x < gap + 1) || (x < (width - gap) + 1 && x > (width - gap) - 1) )
+    }
+    if((x > gap - speed && x < gap + speed) || (x < (width - gap) + speed && x > (width - gap) - speed) )
     {
+      d -= 2;
+      if(d <= 0)
+    {
+      d = 8;
       randomizer = int (random(0, 2));
       if(randomizer == 1)
       {
@@ -77,13 +97,30 @@ class Mycelium{
         x = random(width -10, width + 200);
       }
     }
+    }
+    if(spore)
+    {
+      gap = 100;
+      speed += 5;
+      counter = 0;
+    }
+    else
+    {
+      gap = int(random(1, 15));
+      speed = 1;
+      counter++;
+    }
+    if (counter == 1)
+    {
+      reset();
+    }
   }
   
   void render()
   {
    fill(red, 230, 230);
    noStroke();
-   ellipse(x, y, 8, 8);
+   ellipse(x, y, d, d);
     
   }
 }

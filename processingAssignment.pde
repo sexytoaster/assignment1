@@ -1,4 +1,5 @@
 boolean spore;
+boolean trigger;
 Border border;
 Star[] stars = new Star[800];
 Mycelium[] mycelium = new Mycelium[1000];
@@ -47,14 +48,14 @@ void draw()
  {
   for(int i = 0; i < mycelium.length; i++)
   {
-    mycelium[i].update();
+    mycelium[i].update(trigger);
     mycelium[i].render();
   }
  }
   logo.update();
   logo.render();
   sporeDrive.update(spore);
-  sporeDrive.render();
+  trigger = sporeDrive.render();
 
 
 
