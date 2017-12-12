@@ -2,11 +2,12 @@ class SporeDrive{
   int x;
   int y;
   int r;
+  boolean spore;
   int buttonRadius;
   float i;
   float j;
   PFont drive;
-  
+  String s;
   
  SporeDrive(int x, int y)
  {
@@ -15,40 +16,42 @@ class SporeDrive{
    r = 600;
    drive = loadFont("AmericanCaptainPatrius02FRE-100.vlw");
    buttonRadius = 300;
+   s = "OFFLINE";
  }
  
- void update()
+ void update(boolean trigger)
  {
+   spore = trigger;
    i+= .01;
    j-= .02;
  }
  
  void render()
  {
-   float disX = x - mouseX;
-   float disY = y - mouseY;
-  if(mousePressed)
-  {
-    if (sqrt(sq(disX) + sq(disY)) < buttonRadius/2 )
-    {
-      fill(250);
+   if (spore == true)
+   {
+     s = "ENGAGE";
+     float disX = x - mouseX;
+     float disY = y - mouseY;
+      if(mousePressed)
+      {
+        if (sqrt(sq(disX) + sq(disY)) < buttonRadius/2 )
+        {
+          fill(250);
+        }
+      }
     }
-    //if(counter%2 == 0)
-    //{
-     // rectColour = 0;
-    //}
-    //else
-    //{
-     // rectColour = 100;
-   // }
-  }
+    else
+    {
+      s = "OFFLINE";
+    }
    translate(x, y);
    textFont(drive);
    textSize(40);
    textAlign(CENTER);
    ellipse(0, 0, buttonRadius, buttonRadius);
    noFill();
-   text("OFFLINE", 0, 30);
+   text(s, 0, 30);
    textSize(60);
    text("Spore Drive", 0, 400);
    rotate(i);
