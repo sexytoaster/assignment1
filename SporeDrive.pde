@@ -115,6 +115,7 @@ class SporeDrive{
       s = "OFFLINE";
     }
     //actually rendering the button
+    pushMatrix();
    translate(x, y);
    textFont(drive);
    textSize(40);
@@ -141,7 +142,7 @@ class SporeDrive{
    rotate(j);
    arc(0, 0, r-60, r-60, 0, (PI * 1.8));
    textAlign(LEFT);
-   translate(-x, -y);
+   popMatrix();
    
    return trigger;
  }

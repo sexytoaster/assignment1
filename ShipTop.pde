@@ -126,6 +126,7 @@ class ShipTop
     strokeWeight(1);
     
     stroke(255);
+    pushMatrix();
     translate(x, y);
     //thruster lines
     for(rx = 100; rx <= 150; rx += 10)
@@ -181,7 +182,7 @@ class ShipTop
       }
      //fill(#031F29);
      ellipse(425, 240, 80, 80);
-     translate(-x, -y);
+     popMatrix();
      
      //determine if hovering over the disk
      float disX = x + 425 - mouseX;

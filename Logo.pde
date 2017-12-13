@@ -43,6 +43,7 @@ class Logo
   void render()
   {
     //drawing the logo
+    pushMatrix();
     translate(x, y);
     stroke(255);
     fill(255);
@@ -56,6 +57,6 @@ class Logo
     curve(-150, 0, x1, y1, x3, y3, 25, 200);
     curve(250, 200, x4, y4, x2, y2, 75, 250);
     curve(-50, 200, x4, y4, x3, y3, 125, 250);
-    translate(-x, -y);
+    popMatrix();
   }
 }

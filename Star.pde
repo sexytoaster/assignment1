@@ -58,13 +58,14 @@ class Star {
       {
         stroke(255, 0, 0);
         ellipse(x, y, 20, 20);
+        pushMatrix();
         translate(0, -100);
         line(x, y + 100, sx, sy);
         textSize(32);
         rect(sx - 150, sy -45, 350, 45);
         fill(255, 0, 0);
         text("Klingon Activity Detected", sx -130, sy -17);
-        translate(0, + 100);
+        popMatrix();
        }
     }
   }
